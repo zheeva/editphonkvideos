@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PHONK AUTO EDITOR - Premium Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="badge-ai">AI</span>
+                <h1>PHONK<span class="highlight">AUTO</span>EDITOR</h1>
+                <span class="v2026">v2026.1</span>
+            </div>
+            <div class="status-bar">
+                <p id="system-status">System Ready</p>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <section class="control-panel">
+                <div class="panel-card">
+                    <h3><span class="step-num">1</span> Media Import</h3>
+                    <div class="upload-group">
+                        <label class="upload-box" id="video-dropzone">
+                            <input type="file" id="input-video" accept="video/mp4,video/mov,video/webm" hidden>
+                            <div class="upload-icon">🎬</div>
+                            <div class="upload-text">
+                                <span class="primary-text">Upload Raw Video</span>
+                                <span class="secondary-text">MP4, MOV, WebM (Max 60s)</span>
+                            </div>
+                            <span class="file-name" id="v-name">No file selected</span>
+                        </label>
+
+                        <label class="upload-box" id="audio-dropzone">
+                            <input type="file" id="input-audio" accept="audio/mp3,audio/wav" hidden>
+                            <div class="upload-icon">🎵</div>
+                            <div class="upload-text">
+                                <span class="primary-text">Upload Phonk Track</span>
+                                <span class="secondary-text">MP3, WAV (Max 60s)</span>
+                            </div>
+                            <span class="file-name" id="a-name">No file selected</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="panel-card">
+                    <h3><span class="step-num">2</span> Intelligence Engine</h3>
+                    <div class="form-group">
+                        <label>Vibe & Style Profile</label>
+                        <select id="phonk-vibe">
+                            <option value="aggressive">Aggressive (High Contrast, Heavy Shake)</option>
+                            <option value="drift">Car Drift (Velocity Ramp, Smooth Blur)</option>
+                            <option value="sigma">Sigma / Identity (Deep Glow, Punch Zoom)</option>
+                            <option value="melancholic">Atmospheric / Wave (Slow Motion, Cosmic Text)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Caption Style Preset</label>
+                        <select id="caption-style">
+                            <option value="phonk">PHONK STYLE (All Caps, Glow, Pulse)</option>
+                            <option value="capcut">CAPCUT CLASSIC (White, Black Shadow)</option>
+                            <option value="tiktok">TIKTOK VIRAL (Active Word Highlight)</option>
+                            <option value="cinematic">CINEMATIC SERIF (Elegant Fade)</option>
+                        </select>
+                    </div>
+                    <button id="btn-analyze" class="btn-primary" disabled>
+                        <span class="btn-icon">⚡</span> AI AUTO GENERATE EDIT
+                    </button>
+                </div>
+            </section>
+
+            <section class="preview-panel">
+                <div class="video-preview-wrapper">
+                    <div class="canvas-container">
+                        <canvas id="player-canvas" width="720" height="1280"></select>
+                    </div>
+                    
+                    <div class="player-controls">
+                        <button id="btn-play-pause" class="btn-ctrl">▶</button>
+                        <span id="time-display">00:00 / 00:00</span>
+                        <div class="bpm-badge">BPM: <span id="bpm-val">--</span></div>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-header">
+                        <span>AI Smart Timeline & Beat Track</span>
+                        <span id="current-segment-info" class="segment-badge">Hook Area</span>
+                    </div>
+                    <div class="timeline-track-wrapper" id="timeline-scroll">
+                        <div class="timeline-ruler" id="timeline-ruler"></div>
+                        <div class="track-layer" id="beat-track">
+                            <div class="track-label">BEATS</div>
+                            </div>
+                        <div class="track-layer" id="video-track">
+                            <div class="track-label">VIDEO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-container">
+                    <button id="btn-export" class="btn-success" disabled>📦 EXPORT 720p 60FPS (MP4)</button>
+                    <div class="progress-bar-wrapper" id="export-progress-area" style="display: none;">
+                        <div class="progress-info">
+                            <span id="progress-status">Rendering Video Frames via Web Workers...</span>
+                            <span id="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="eta-text">Estimated Time Remaining: <span id="eta-val">Calculating...</span></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <video id="source-video" style="display:none;" muted crossorigin="anonymous"></video>
+    <audio id="source-audio" style="display:none;" crossorigin="anonymous"></audio>
+</body>
+</html>
